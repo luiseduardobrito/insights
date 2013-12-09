@@ -3111,12 +3111,14 @@ form legend,
 
 .user-info-wrapper .user-info .username{
 	font-size:19px;
+	position: relative;
+	top: 15px;
 }
 .user-info-wrapper .user-info .greeting{
-	font-size:19px;
+	font-size:12px;
 	font-weight:600;
 	position: relative;
-    top: 1.5px;
+    top: 15px;
 }
 .user-info-wrapper .user-info a{
 	color:#fff;
