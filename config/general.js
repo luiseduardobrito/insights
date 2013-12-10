@@ -19,7 +19,7 @@ module.exports = {
 			user: "root",
 			password: "",
 
-			db: "main",
+			db: "insights",
 			host: "localhost"
 		}
 	},

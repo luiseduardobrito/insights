@@ -4,10 +4,22 @@ module.exports = {
 	
 	"get": {
 
-		"/hello": {
+		"/user/create": {
 
-			controller: "home",
-			method: "index",
+			controller: "user",
+			method: "create",
+		},
+
+		"/user/login": {
+
+			controller: "user",
+			method: "login",
+		},
+
+		"/user/logout": {
+
+			controller: "user",
+			method: "logout",
 
 			filters: ["authenticated"]
 		}

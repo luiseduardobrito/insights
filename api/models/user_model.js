@@ -11,23 +11,25 @@ var UserSchema = new Schema({
 	},
 
 	email: {
+
 		type: String,
-		required: true
+		required: true,
+
+		index: {
+			unique: true, 
+			dropDups: false
+		}
 	},
 
 	password: {
+
 		type: String,
+		required: true
 	},
 
 	cel: {
 		type: String
 	}
-}, {
-
-	toObject: {
-		virtuals: true
-	}
-
 });
 
 // ---------- Password Encryption ---------- //
@@ -89,8 +91,6 @@ UserSchema.statics.authenticate = function (user, cb) {
 			cb(new Error("User not found"), null)	
 			return;
 		}
-
-		console.log(candidate.password);
 
 		var bcrypt = require("bcrypt");
 		bcrypt.compare(user.password, candidate.password, function(err, isMatch) {
