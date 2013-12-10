@@ -93,9 +93,30 @@ insightsServices.factory('userService', ['$http',
 		var _this = this;
 		var _public = {};
 
+		_this.me = null;
+
 		_this.init = function() {
 
+			$http({
+				url: "/api/user/me", 
+				method: "GET",
+				params: {}
+			})
+
+			.success(function(data) {
+				if(!data || data.result == "error") {
+					return;
+				}
+				else
+					_this.me = data.user;
+			})
+
+			return _public;
 		};
+
+		_public.me = function() {
+			return _this.me;
+		}
 
 		_public.create = function(user, fn) {
 
