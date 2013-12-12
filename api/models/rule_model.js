@@ -26,7 +26,8 @@ var RuleSchema = new Schema({
 	interval: {
 
 		type: Number,
-		required: true
+		required: true,
+		default: 1 * 1000 // 1 minuto
 	},
 
 	next: {
@@ -35,7 +36,7 @@ var RuleSchema = new Schema({
 		required: true,
 
 		default: function() {
-			Date.now().toISOString()
+			return (new Date(Date.now())).toISOString()
 		}
 	},
 
@@ -45,7 +46,7 @@ var RuleSchema = new Schema({
 		required: true,
 
 		default: function() {
-			Date.now().toISOString()
+			return (new Date(Date.now())).toISOString()
 		}
 	}
 });
@@ -60,6 +61,25 @@ RuleSchema.methods.toJSON = function() {
 	delete obj._id;
 
 	return obj;
+}
+
+RuleSchema.statics.setReady = function (item, fn) {
+
+	return this.findOne({
+
+		_id: item._id
+
+	}, function(err, rule) {
+
+		if(err)
+			return fn(err, null);
+		else {
+
+			var i = rule.interval || 15 * 10000;
+			rule.next = (new Date(Date.now() + i)).toISOString()
+			return rule.save(fn)
+		}
+	});
 }
 
 RuleSchema.statics.getQueue = function (fn) {

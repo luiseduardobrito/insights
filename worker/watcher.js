@@ -68,10 +68,10 @@ var Watcher = function(q, t){
 		
 		var rpt = item.repeat || 15;
 		item.next = (new Date((new Date()).getTime() + rpt * 60000)).getTime()
-		
-		model.save(item, function(){
+
+		Rule.setReady(item, function() {
 			queue.push(item);
-		});
+		})
 	};
 
 	var isActive = function(){

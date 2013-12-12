@@ -22,8 +22,25 @@ module.exports = {
 			method: "logout",
 
 			filters: ["authenticated"]
-		}
+		},
+
+		"/rule/create": {
+
+			controller: "rule",
+			method: "create",
+
+			filters: ["authenticated"]
+		},
 	},
 
-	"post": {}
+	"post": {
+		
+		"/rule/create": {
+
+			controller: "rule",
+			method: "create",
+
+			filters: ["authenticated"]
+		}
+	}
 }
