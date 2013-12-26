@@ -9,11 +9,13 @@ var storage = require("./storage");
 
 var Worker = function(q, t){
 
+	var _this = this;
+	var _public = _this.exports = {};
+
 	// autostart
 	var START_ON_INIT = false;
 	var DEFAULT_TIMEOUT = 5000;
 
-	var exports = {};
 	var active = false;
 	var queue = q || require("./queue") || null;
 	var storage = require("./storage");
@@ -21,12 +23,12 @@ var Worker = function(q, t){
 	var refreshIntervalId = null; 
 	var timeout = t || DEFAULT_TIMEOUT;
 
-	var start = function(timeout) {
+	_public.start = function(timeout) {
 		
 		active = true;
 		timeout = timeout || DEFAULT_TIMEOUT;
 
-		work();
+		_public.work();
 
 		setInterval(function(){
 
@@ -35,13 +37,13 @@ var Worker = function(q, t){
 				return;
 			}
 
-			work();
+			_public.work();
 			
 		}, timeout);
 
-	}; exports.start = start;
+	};
 
-	var work = function() {
+	_public.work = function() {
 
 		queue.get(function(task){
 			
@@ -61,9 +63,9 @@ var Worker = function(q, t){
 			}
 		});
 
-	}; exports.work = work;
+	};
 	
-	var analysis = function(items, task) {
+	_this.analysis = function(items, task) {
 		
 		pipelineInterpreter.input(task.tunnel, {result: items});
 
@@ -78,27 +80,27 @@ var Worker = function(q, t){
 		});
 	};
 
-	var isActive = function(){
+	_public.isActive = function(){
 
 		return active ? true : false;
 
-	}; exports.isActive = isActive;
+	};
 
-	var stop = function() {
+	_public.stop = function() {
 		
 		active = false;
 
-	}; exports.stop = stop;
+	};
 
-	var init = function() {
+	_this.init = function() {
 
 		if(START_ON_INIT)
 			start();
 		
-		return exports;
+		return _public;
 	};
 
-	return init();
+	return _this.init();
 };
 
 module.exports = Worker;
