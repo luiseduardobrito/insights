@@ -14,6 +14,21 @@ phonecatApp.config(['$routeProvider',
 				controller: 'DashboardCtrl'
 			}).
 
+			when('/login', {
+				templateUrl: 'partials/login.html',
+				controller: 'LoginCtrl'
+			}).
+
+			when('/signup', {
+				templateUrl: 'partials/signup.html',
+				controller: 'SignupCtrl'
+			}).
+
+			when('/rules', {
+				templateUrl: 'partials/rules.html',
+				controller: 'RulesCtrl'
+			}).
+
 			otherwise({
 				redirectTo: '/'
 			});
