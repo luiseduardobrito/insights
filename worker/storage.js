@@ -1,10 +1,12 @@
-var hoard = require("hoard");
+var mongoose = require("../api/services/mongoose");
+var Timespan = mongoose.model("timespan");
 
 var Manager = function() {
 	
-	var exports = {};
+	var _this = this;
+	var _public = _this.exports = {};
 	
-	var addItem = function(data, cb) {
+	_public.addItem = function(data, cb) {
 		
 		cb = cb || function(){};
 			
@@ -16,37 +18,29 @@ var Manager = function() {
 		
 		else {
 			
-			var model = require("../api/adapters/model");
-			
-			var item = model.create("timeserie", {
+			var analysis = new Timespan({
 				rule: data.serie || data.rule,
 				time: data.time || (new Date()).getTime(),
 				values: data.values || data.value
 			});
 				
-			model.save(item, cb);
+			analysis.save(cb);
 		}
 		
-	}; exports.addItem = addItem;
+	};
 	
-	var getLatestAnalysis = function(serie, cb) {
+	_public.getLatestAnalysis = function(serie, cb) {
 		
-		var model = require("../api/adapters/model");
-		
-		return model.find("timeserie", {
-			
-			rule: serie,
-			limit: 1,
-			
-			sort: {
+		Timespan
+			.find({	rule: serie })
+			.limit(1)
+			.sort({
 				time: -1
-			},
-			
-		}, cb);
-		
-	}; exports.getLatestAnalysis = getLatestAnalysis;
+			})
+			.exec(cb);
+	};
 	
-	var getTimeSpan = function(serie, rest, cb) {
+	_public.getTimeSpan = function(serie, rest, cb) {
 		
 		var time_restriction = {}
 		time_restriction["$lt"] = rest.max;
@@ -56,34 +50,33 @@ var Manager = function() {
 			throw new Error("Timespan restriction not defined. " + 
 				"Don't forget to specify both max and min time values.");
 		
-		var model = require("../api/adapters/model");
-		
-		return model.find("timeserie", {
-			
-			rule: serie,
-			time: time_restriction,
-			limit: 10,
-			
-			sort: {
+		Timespan
+			.find({
+				rule: serie,
+				time: time_restriction
+			})
+			.limit(1)
+			.sort({
 				time: -1
-			},
-			
-		}, cb);
-		
-	}; exports.getTimeSpan = getTimeSpan;
+			})
+			.exec(cb);
+	};
 	
-	var getItems = function(serie, rest, cb) {
+	_public.getItems = function(serie, rest, cb) {
 		
-		var model = require("../api/adapters/model");		
-		return model.find("timeserie", rest, cb);
-		
-	}; exports.getItems = getItems;
+		Timespan
+			.find(rest)
+			.sort({
+				time: -1
+			})
+			.exec(cb);
+	};
 	
-	var init = function() {
-		return exports;
+	_this.init = function() {
+		return _public;
 	}
 	
-	return init();
+	return _this.init();
 }
 
 module.exports = new Manager();

@@ -1,6 +1,7 @@
 var Bundle = require("../bundle");
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
+
+var model = require("../../../api/adapters/model");
 
 var Americanas = function (config) {
 	
@@ -52,6 +53,7 @@ var Americanas = function (config) {
                         currency: "BRL"
                     },
                     url: $(urls[i]).attr().href.split("?link=")[1]
+
                 }));
                 
             }
