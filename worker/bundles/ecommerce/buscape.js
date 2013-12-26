@@ -2,8 +2,10 @@ var util = require("util");
 var request = require("request");
 var lang = require("../../../language").getDefault();
 
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Buscape = function(){
 	
@@ -49,7 +51,7 @@ var Buscape = function(){
 						var url = product.links[0].link.url;
 						
 						
-						items.push(model.create("item", {
+						var newItem = new Item({
 							
 							title: product.productshortname,
 							content: product.productshortname,
@@ -63,7 +65,9 @@ var Buscape = function(){
 								}
 							},
 							url: url
-						}));
+						});
+
+						items.push(newItem.toObject())
 					}
 					catch(e) {
 						console.log("Problem creating item in Buscape Bundle. " + e.message.toString());

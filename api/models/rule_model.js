@@ -92,7 +92,16 @@ RuleSchema.statics.getQueue = function (fn) {
 			"$lt": now
 		}
 
-	}, fn);
+	}, function(err, rules) {
+
+		if(err) return fn(err, null);
+
+		else
+
+			// TODO: atualizar 'next' das regras
+			return fn(null, rules);
+
+	});
 };
 
 module.exports = RuleSchema;

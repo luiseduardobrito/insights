@@ -7,7 +7,7 @@ var pipelineInterpreter = new PipelineInterpreter();
 
 var storage = require("./storage");
 
-var Worker = function(q, t){
+var Worker = function(q, t) {
 
 	var _this = this;
 	var _public = _this.exports = {};
@@ -54,7 +54,7 @@ var Worker = function(q, t){
 			try {
 			
 				bundleInterpreter.get(task.source, function(items) {
-					analysis(items, _t);
+					_this.analysis(items, _t);
 				});
 			}
 			

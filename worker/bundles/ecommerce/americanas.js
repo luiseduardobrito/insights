@@ -1,7 +1,8 @@
 var Bundle = require("../bundle");
 var config = require("../../../config/bundles.json");
 
-var model = require("../../../api/adapters/model");
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Americanas = function (config) {
 	
@@ -44,7 +45,7 @@ var Americanas = function (config) {
             var amounts = regexExport($(".regular.price.clear_lfloat").text(), /[0-9:]/g);
         
             for(var i = 0;i<20; i++){
-                items.push(model.create("item", {
+                items.push(new Item({
                                 
                     title: $(titles[i]).text(),
                     content: $(contents[i]).text().trim()!=="" ? $(contents[i]).text() : $(titles[i]).text() ,

@@ -11,10 +11,31 @@ var ItemSchema = new Schema({
 		ref: 'rule'
 	},
 
-	values: {
+	title: {
+		type: String,
+	},
+
+	content: {
+
+		type: String,
+		required: true
+	},
+
+	meta: {
 
 		type: Schema.Types.Mixed,
 		required: true
+	},
+
+	url: {
+
+		type: String,
+		required: true,
+
+		index: {
+			unique: true,
+			dropDups: true
+		}
 	},
 
 	time: {

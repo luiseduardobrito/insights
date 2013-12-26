@@ -17,7 +17,7 @@ var Manager = function() {
 			throw new Error("No data values defined");
 		
 		else {
-			
+
 			var analysis = new Timespan({
 				rule: data.serie || data.rule,
 				time: data.time || (new Date()).getTime(),
