@@ -1,15 +1,17 @@
 var queue = function(){
 
-	var exports = {};
+	var _this = this;
+	var _public = _this.exports = {};
+
 	var q = [];
 
-	var push = function(data) {
+	_public.push = function(data) {
 
 		q.push(data);
 
-	}; exports.push = push;
+	};
 
-	var get = function(cb) {
+	_public.get = function(cb) {
 
 		cb = cb || function(){};
 
@@ -18,24 +20,24 @@ var queue = function(){
 		if(task)
 			cb(task);
 
-	}; exports.get = get;
+	};
 
-	var size = function() {
+	_public.size = function() {
 
 		return q.length;
 
-	}; exports.size = size;
+	};
 
-	var init = function() {
+	_this.init = function() {
 
 		if(queue.caller != queue.getInstance){
 			throw new Error("This object cannot be instanciated");
 		}
 
-		return exports;
+		return _public;
 	}
 
-	return init();
+	return _this.init();
 }
  
 /* ************************************************************************
