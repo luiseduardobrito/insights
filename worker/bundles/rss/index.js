@@ -1,8 +1,10 @@
 var lang = require("../../../language").getDefault();
 
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
 var parser = require('blindparser');
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var RssReader = function(config) {
 	
@@ -38,13 +40,15 @@ var RssReader = function(config) {
 			
 			for(var i = 0; i < out.items; i++) {
 			
-				items.push(model.create("item", {				
+				var newItem = new Item({				
 					title: string(out.items[i].title).humanize().s,
 					content: out.items[i].desc,
 					pubDate: (new Date(out.items[i].date)).toISOString(),
 					meta: meta,
 					url: out.items[i].link || meta.url || task.url || ""
-				}));
+				});
+
+				items.push(newItem);
 			}
 			
 			cb(items);
