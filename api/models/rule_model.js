@@ -1,6 +1,9 @@
 var mongoose = require("../services/mongoose");
-var Schema = mongoose.schema;
 var validate = require('mongoose-validator').validate;
+var Schema = mongoose.schema;
+var async = require("async");
+
+var DEFAULT_INTERVAL = 15*60*1000; // 15 minutos
 
 var RuleSchema = new Schema({
 
@@ -27,7 +30,7 @@ var RuleSchema = new Schema({
 
 		type: Number,
 		required: true,
-		default: 1 * 1000 // 1 minuto
+		default: DEFAULT_INTERVAL
 	},
 
 	next: {
@@ -50,7 +53,6 @@ var RuleSchema = new Schema({
 		}
 	}
 });
-
 
 RuleSchema.methods.toJSON = function() {
 	
@@ -96,11 +98,35 @@ RuleSchema.statics.getQueue = function (fn) {
 
 		if(err) return fn(err, null);
 
-		else
+		else {
 
-			// TODO: atualizar 'next' das regras
-			return fn(null, rules);
+			var Rules = mongoose.model("rule");
+			var next = (new Date(Date.now() + DEFAULT_INTERVAL)).toISOString();
 
+			Rules.update({
+
+				"next": {
+					"$lt": now
+				}
+
+			}, {
+
+				"$set": {
+					"next": next
+				}
+
+			}, {multi: true}, function(err) {
+
+				if(err)	
+					fn(err, null);
+
+				for(var i = 0; i < rules.length; i++) {
+					rules[i] = rules[i].toObject();
+				}
+				
+				fn(null, rules);
+			})
+		}
 	});
 };
 
