@@ -3,7 +3,9 @@ var scrap = require("nom");
 var string = require("string");
 
 var lang = require("../../../language").getDefault();
-var model = require("../../../api/adapters/model");
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Scrapper = function(){
 	
@@ -38,7 +40,7 @@ var Scrapper = function(){
 			
 			var items = [];
 			
-			items.push(model.create("item", {
+			var newItem = new Item({
 							
 				title: string($('title').text()).humanize().s,
 				content: $('body').text(),
@@ -47,8 +49,9 @@ var Scrapper = function(){
 					raw: $('html').html() || $('html').text() || ""
 				},
 				url: task.url
-			}));
-						
+			});
+
+			items.push(newItem);
 			cb(items)
 		});
 		

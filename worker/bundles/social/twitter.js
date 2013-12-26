@@ -2,8 +2,10 @@ var util = require("util");
 var request = require("request");
 var lang = require("../../../language").getDefault();
 
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Twitter = function(){
 	
@@ -45,11 +47,13 @@ var Twitter = function(){
                 //logical of url tweet
                 if(tweets[i].retweeted_status){
                     tweetUrl = "https://twitter.com/" + tweets[i].retweeted_status.user.screen_name + "/status/" + tweets[i].retweeted_status.id_str;
-                }else{
+                }
+
+                else{
                     tweetUrl = "https://twitter.com/" + tweets[i].user.screen_name + "/status/" + tweets[i].id_str;
                 }
                 
-                items.push(model.create("item", {        
+                var newItem = new Item({
                     title: tweets[i].text,
                     content: tweets[i].text,
                     meta: {
@@ -63,8 +67,9 @@ var Twitter = function(){
                     pubDate: new Date(tweets[i].created_at).toISOString()
                 }));
             }
-        
-		cb(items); 
+            
+            items.push(newItem);
+    		cb(items); 
         });
 		
 	}; exports.getItems = getItems;
