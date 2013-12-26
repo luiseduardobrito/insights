@@ -2,8 +2,10 @@ var util = require("util");
 var request = require("request");
 var lang = require("../../../language").getDefault();
 
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Mercadolivre = function(){
 
@@ -62,7 +64,7 @@ var Mercadolivre = function(){
 
 						name = getAuthor(product.seller);
 
-						items.push(model.create("item", {
+						var newItem = new Item({
 							title: product.title,
 							content: subtitle,
 							meta: {
@@ -74,9 +76,13 @@ var Mercadolivre = function(){
 								}
 							},
 							url: url
-						}));
+						});
+
+						items.push(newItem);
 					}
+
 					catch(e) {
+						
 						console.log("Problem creating item in Mercadolivre Bundle. " + err.message.toString());
 						throw e;
 					}

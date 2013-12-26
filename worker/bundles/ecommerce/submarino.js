@@ -1,6 +1,8 @@
 var Bundle = require("../bundle");
-var model = require("../../../api/adapters/model");
 var config = require("../../../config/bundles.json");
+
+var mongoose = require("../../../api/services/mongoose");
+var Item = mongoose.model("item");
 
 var Submarino = function (config) {
 	
@@ -43,7 +45,8 @@ var Submarino = function (config) {
             var amounts = regexExport($(".amount").text(), /[0-9:]/g);
         
             for(var i = 0;i<20; i++){
-                items.push(model.create("item", {
+
+                var newItem = new Item({
                                 
                     title: $(titles[i]).text(),
                     content: $(contents[i]).text().trim()!=="" ? $(contents[i]).text() : $(titles[i]).text() ,
@@ -52,9 +55,12 @@ var Submarino = function (config) {
                         currency: "BRL"
                     },
                     url: $(urls[i]).attr().href.split("?link=")[1]
-                }));
-                
+
+                });
+
+                items.push(newItem);                
             }
+            
             cb(items);
 		});
 		

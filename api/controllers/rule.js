@@ -31,12 +31,30 @@ module.exports = {
 			}
 
 			return res.json({
-
 				result: "success",
 				message: "rule created successfully",
 				rule: rule
 			})
 		})
+	},
 
+	span: function(req, res) {
+
+		if(!req.param("id")) {
+			return res.json({
+				result: "error",
+				message: "missing query params"
+			})
+		}
+
+		Timespan.getResume(req.param("id"), function(err, result) {
+
+			return res.json({
+				result: "success",
+				message: "rule resume found successfully",
+				resume: results
+			})
+
+		})
 	}
 }

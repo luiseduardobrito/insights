@@ -45,7 +45,8 @@ var Americanas = function (config) {
             var amounts = regexExport($(".regular.price.clear_lfloat").text(), /[0-9:]/g);
         
             for(var i = 0;i<20; i++){
-                items.push(new Item({
+
+                var newItem = new Item({
                                 
                     title: $(titles[i]).text(),
                     content: $(contents[i]).text().trim()!=="" ? $(contents[i]).text() : $(titles[i]).text() ,
@@ -55,9 +56,11 @@ var Americanas = function (config) {
                     },
                     url: $(urls[i]).attr().href.split("?link=")[1]
 
-                }));
-                
+                });
+
+                items.push(newItem.toObject());
             }
+            
             cb(items);
 		});
 		
