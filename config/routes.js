@@ -24,10 +24,10 @@ module.exports = {
 			filters: ["authenticated"]
 		},
 
-		"/rule/create": {
+		"/rule/span": {
 
 			controller: "rule",
-			method: "create",
+			method: "span",
 
 			filters: ["authenticated"]
 		},

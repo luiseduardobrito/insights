@@ -39,4 +39,15 @@ TimespanSchema.methods.toJSON = function() {
 	return obj;
 }
 
+TimespanSchema.statics.getResume = function(rule_id, fn) {
+
+	fn = fn || function(){};
+
+	this
+		.find({	rule: rule_id })
+		.sort({	time: -1 })
+		.limit(10)
+		.exec(fn)
+}
+
 module.exports = TimespanSchema;

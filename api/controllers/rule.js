@@ -1,6 +1,7 @@
 var mongoose = require("../services/mongoose");
 
 var Rule = mongoose.model("rule");
+var Timespan = mongoose.model("timespan");
 
 module.exports = {
 	
@@ -52,7 +53,7 @@ module.exports = {
 			return res.json({
 				result: "success",
 				message: "rule resume found successfully",
-				resume: results
+				resume: result
 			})
 
 		})
