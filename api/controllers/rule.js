@@ -55,7 +55,6 @@ module.exports = {
 				message: "rule resume found successfully",
 				resume: result
 			})
-
 		})
 	}
 }

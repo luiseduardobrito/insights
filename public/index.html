@@ -116,18 +116,16 @@
 			<!-- BEGIN SIDEBAR MENU --> 
 			<p class="menu-title">PROFILE <span class="pull-right"><a href="javascript:;"></i></a></span></p>
 			<ul>
-			<li class="start active "> <a href="index.html"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a> </li>
-			<li class="start active "> <a href="index.html"> <i class="icon-custom-form"></i> <span class="title">Rules</span> <span class="selected"></span></a> </li>
+			<li class="start active"> <a href="#!/"> <i class="icon-custom-home"></i> <span class="title">Início</span> <span class="selected"></span></a> </li>
+			<li class="start"> <a href="#!/rules"> <i class="icon-custom-form"></i> <span class="title">Monitoramento</span> <span class="selected"></span></a> </li>
+			<li class="start"> <a href="#!/rules"> <i class="icon-custom-form"></i> <span class="title">Relatórios</span> <span class="selected"></span></a> </li>
 			<li class="">
-				<a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Trending</span> <span class="arrow "></span> </a>
+				<a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Configurações</span> <span class="arrow "></span> </a>
 				<ul class="sub-menu">
-					<li > <a href="typography.html"> Typography </a> </li>
-					<li > <a href="messages_notifications.html"> Messages & Notifications </a> </li>
-					<li > <a href="icons.html">Icons</a> </li>
-					<li > <a href="buttons.html">Buttons</a> </li>
-					<li > <a href="tabs_accordian.html"> Tabs & Accordions </a> </li>
-					<li > <a href="sliders.html">Sliders</a> </li>
-					<li > <a href="group_list.html">Group list </a> </li>
+					<li > <a href="#!/settings"> Preferências </a> </li>
+					<li > <a href="#!/settings/account"> Contas e Acesso </a> </li>
+					<li > <a href="#!/settings/export">Exportação e Endpoints</a> </li>
+					<li > <a href="#!/admin">Avançado</a> </li>
 				</ul>
 			</li>
 			<li class="">
@@ -242,8 +240,8 @@
 		<script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
 		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
 		<script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script> 
-		<script src="assets/plugins/breakpoints.js" type="text/javascript"></script> 
-		<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/breakpoints.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
 		<!-- END CORE JS FRAMEWORK --> 
 		<!-- BEGIN ANGULAR FRAMEWORK -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js" type="text/javascript"></script>
@@ -253,35 +251,25 @@
 		<script src="/js/controllers.js" type="text/javascript"></script> 
 		<!-- END ANGULAR FRAMEWORK -->
 		<!-- BEGIN PAGE LEVEL JS --> 
-		<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
-		<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
-		<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> 
-		<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>  
-		<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
-		<script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
-		<script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-		<script src="assets/plugins/jquery-ricksaw-chart/js/raphael-min.js"></script> 
-		<script src="assets/plugins/jquery-ricksaw-chart/js/d3.v2.js"></script>
-		<script src="assets/plugins/jquery-ricksaw-chart/js/rickshaw.min.js"></script>
-		<script src="assets/plugins/jquery-morris-chart/js/morris.min.js"></script>
-		<script src="assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
-		<script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>  
-		<script src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>   
-		<script src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-us-lcc-en.js" type="text/javascript"></script>   
-		<script src="assets/plugins/jquery-sparkline/jquery-sparkline.js"></script>
-		<script src="assets/plugins/jquery-flot/jquery.flot.min.js"></script>
-		<script src="assets/plugins/jquery-flot/jquery.flot.animator.min.js"></script>
-		<script src="assets/plugins/skycons/skycons.js"></script>
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			
-			ga('create', 'UA-45776281-1', 'revox.io');
-			ga('send', 'pageview');
-			
-		</script>
+		<script ng-src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
+		<script ng-src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>  
+		<script ng-src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+		<script ng-src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+		<script ng-src="assets/plugins/jquery-ricksaw-chart/js/raphael-min.js"></script> 
+		<script ng-src="assets/plugins/jquery-ricksaw-chart/js/d3.v2.js"></script>
+		<script ng-src="assets/plugins/jquery-ricksaw-chart/js/rickshaw.min.js"></script>
+		<script ng-src="assets/plugins/jquery-morris-chart/js/morris.min.js"></script>
+		<script ng-src="assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+		<script ng-src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>  
+		<script ng-src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>   
+		<script ng-src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-us-lcc-en.js" type="text/javascript"></script>   
+		<script ng-src="assets/plugins/jquery-sparkline/jquery-sparkline.js"></script>
+		<script ng-src="assets/plugins/jquery-flot/jquery.flot.min.js"></script>
+		<script ng-src="assets/plugins/jquery-flot/jquery.flot.animator.min.js"></script>
+		<script ng-src="assets/plugins/skycons/skycons.js"></script>
 		<!-- END PAGE LEVEL PLUGINS   -->   
 		<!-- PAGE JS -->  
 		<script ng-src="assets/js/dashboard.js" type="text/javascript"></script>

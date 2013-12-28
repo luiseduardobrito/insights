@@ -4,8 +4,13 @@ var phonecatApp = angular.module('insightsApp', [
 	'insightsApp.services'
 ]);
  
-phonecatApp.config(['$routeProvider',
-	function($routeProvider) {
+phonecatApp.config(['$routeProvider', '$locationProvider',
+	
+	function($routeProvider, $locationProvider) {
+
+		$locationProvider
+			.html5Mode(false)
+			.hashPrefix('!');
 
 		$routeProvider.
 
