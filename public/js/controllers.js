@@ -9,21 +9,28 @@ insightsControllers.controller('DashboardCtrl', ['$scope', '$http', 'userService
 	}
 ]);
 
-insightsControllers.controller('LoginCtrl', ['$scope', '$http', 'userService', 'alertService',
+// insightsControllers.controller('LoginCtrl', ['$scope', '$http', 'userService', 'alertService',
 
-	function ($scope, $http, $User, $alert) {
+// 	function ($scope, $http, $User, $alert) {
 		
-	}
-]);
+// 	}
+// ]);
 
-insightsControllers.controller('SignupCtrl', ['$scope', '$http', 'userService', 'alertService',
+// insightsControllers.controller('SignupCtrl', ['$scope', '$http', 'userService', 'alertService',
 
-	function ($scope, $http, $User, $alert) {
+// 	function ($scope, $http, $User, $alert) {
 		
-	}
-]);
+// 	}
+// ]);
 
 insightsControllers.controller('RulesCtrl', ['$scope', '$http', 'userService', 'alertService',
+
+	function ($scope, $http, $User, $alert) {
+		
+	}
+]);
+
+insightsControllers.controller('CreateRuleCtrl', ['$scope', '$http', 'userService', 'alertService',
 
 	function ($scope, $http, $User, $alert) {
 		

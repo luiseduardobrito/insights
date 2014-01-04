@@ -19,19 +19,24 @@ phonecatApp.config(['$routeProvider', '$locationProvider',
 				controller: 'DashboardCtrl'
 			}).
 
-			when('/login', {
-				templateUrl: 'partials/login.html',
-				controller: 'LoginCtrl'
-			}).
+			// when('/login', {
+			// 	templateUrl: 'partials/login.html',
+			// 	controller: 'LoginCtrl'
+			// }).
 
-			when('/signup', {
-				templateUrl: 'partials/signup.html',
-				controller: 'SignupCtrl'
-			}).
+			// when('/signup', {
+			// 	templateUrl: 'partials/signup.html',
+			// 	controller: 'SignupCtrl'
+			// }).
 
 			when('/rules', {
 				templateUrl: 'partials/rules.html',
 				controller: 'RulesCtrl'
+			}).
+
+			when('/rule/create', {
+				templateUrl: 'partials/create-rule.html',
+				controller: 'CreateRuleCtrl'
 			}).
 
 			otherwise({

@@ -36,6 +36,14 @@ app.get('/', function(req, res) {
 	res.sendfile("index.html", {root: './public'});
 })
 
+app.get('/login', function(req, res) {
+	res.sendfile("login.html", {root: './public'});
+})
+
+app.get('/signup', function(req, res) {
+	res.sendfile("signup.html", {root: './public'});
+})
+
 api.router(app);
 
 app.get('/*', function(req, res) {

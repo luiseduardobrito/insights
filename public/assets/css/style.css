@@ -36,8 +36,12 @@ Page header
 }
 .header-seperation{
 	background-color:#22262e;
-	
 }
+
+.header-seperation-login{
+	background-color:#ffffff;
+}
+
 .header .navbar-inner {
   filter:none !important;
   background-image: none !important;
