@@ -16,14 +16,20 @@ insightsDirectives.directive('bootstrapTagsinput', [function() {
 	}
 
 	return {
+
 		restrict: 'EA',
+
 		scope: {
 			model: '=ngModel'
 		},
+
 		template: '<select multiple></select>',
 		replace: false,
+
 		link: function(scope, element, attrs) {
+
 			$(function() {
+				
 				if (!angular.isArray(scope.model))
 					scope.model = [];
 

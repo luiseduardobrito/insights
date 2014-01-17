@@ -1,6 +1,6 @@
 var phonecatApp = angular.module('insightsApp', [
 	'ngRoute',
-	// 'insightsApp.directives',
+	'insightsApp.directives',
 	'insightsApp.controllers',
 	'insightsApp.services'
 ]);
@@ -13,12 +13,16 @@ phonecatApp.config(['$routeProvider', '$locationProvider',
 			.html5Mode(false)
 			.hashPrefix('!');
 
-		$routeProvider.
+		$routeProvider
 
-			when('/', {
-				templateUrl: 'partials/dashboard.html',
-				controller: 'DashboardCtrl'
-			}).
+			.when('/', {
+				redirectTo: '/rules'
+			})
+
+			//when('/', {
+			//	templateUrl: 'partials/dashboard.html',
+			//	controller: 'DashboardCtrl'
+			//}).
 
 			// when('/login', {
 			// 	templateUrl: 'partials/login.html',
@@ -30,17 +34,17 @@ phonecatApp.config(['$routeProvider', '$locationProvider',
 			// 	controller: 'SignupCtrl'
 			// }).
 
-			when('/rules', {
+			.when('/rules', {
 				templateUrl: 'partials/rules.html',
 				controller: 'RulesCtrl'
-			}).
+			})
 
-			when('/rule/create', {
+			.when('/rule/create', {
 				templateUrl: 'partials/create-rule.html',
 				controller: 'CreateRuleCtrl'
-			}).
+			})
 
-			otherwise({
+			.otherwise({
 				redirectTo: '/'
 			});
 	}]);
