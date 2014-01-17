@@ -1695,6 +1695,12 @@ font-family: 'Open Sans';
 	padding-top:83px;
 }
 
+.page-content .content-create{
+	padding-left: 0px;
+	padding-right: 26px;
+	padding-top:0px;
+}
+
 a.icon:hover {
   text-decoration: none;
   -webkit-transition: all 0.1s ease-in-out;
@@ -3117,6 +3123,7 @@ form legend,
 	font-size:19px;
 	position: relative;
 	top: 15px;
+	max-width: 30px;
 }
 .user-info-wrapper .user-info .greeting{
 	font-size:12px;
