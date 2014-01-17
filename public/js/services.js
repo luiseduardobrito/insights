@@ -182,3 +182,10 @@ insightsServices.factory('userService', ['$http',
 		return _this.init();
 	}
 ])
+
+insightsServices.factory('ruleService', ['$http',
+
+	function($http) {
+		//TO DO
+	}
+])
