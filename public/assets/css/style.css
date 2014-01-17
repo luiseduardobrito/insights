@@ -1766,6 +1766,13 @@ label.done{
   color:#0090d9 !important;
   text-decoration:line-through;
 }
+
+.login-form {
+	left:380px; 
+	background:#FFF; 
+	border-radius:5px;
+}
+
 .uneditable-input,
 textarea,
 input[type="text"],
@@ -5263,6 +5270,11 @@ ul.progress-list li  .progress{
 
 .form-group{
 	margin-bottom:20px;
+	width: 100% !important;
+}
+
+.form-btn{
+	width: 100% !important;
 }
 
 .form-group .form-label{
