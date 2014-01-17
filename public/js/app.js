@@ -1,6 +1,6 @@
 var phonecatApp = angular.module('insightsApp', [
 	'ngRoute',
-	'insightsApp.directives',
+	// 'insightsApp.directives',
 	'insightsApp.controllers',
 	'insightsApp.services'
 ]);

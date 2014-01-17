@@ -149,6 +149,36 @@ insightsServices.factory('userService', ['$http',
 			});
 		}
 
+		_public.auth = function(user, fn) {
+
+			fn = fn || function() {};
+
+			if(!user || !user.email || !user.password) {
+				return fn(new Error("Usuário ou senha inválidos!"));
+			}
+
+			$http({
+				url: "/api/user/login",
+				method: "GET",
+				params: {
+					email: user.email,
+					password: user.password
+				}
+			})
+
+			.success(function(data) {
+				if(data && data.user) {
+					_this.me = data.user;
+				}
+
+				fn(null, _public.me());
+			})
+
+			.error(function(err) {
+				fn(err, null);
+			});
+		}
+
 		return _this.init();
 	}
 ])
