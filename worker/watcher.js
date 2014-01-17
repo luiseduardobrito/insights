@@ -7,7 +7,7 @@ var Watcher = function(q, t){
 
 	// autostart
 	var START_ON_INIT = false;
-	var DEFAULT_TIMEOUT = 10000;
+	var DEFAULT_TIMEOUT = 100000;
 
 	var exports = {};
 	var active = false;

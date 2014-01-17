@@ -35,7 +35,7 @@ var RuleSchema = new Schema({
 
 	next: {
 
-		type: String,
+		type: Date,
 		required: true,
 
 		default: function() {
@@ -45,7 +45,7 @@ var RuleSchema = new Schema({
 
 	time: {
 
-		type: String,
+		type: Date,
 		required: true,
 
 		default: function() {
@@ -91,7 +91,7 @@ RuleSchema.statics.getQueue = function (fn) {
 	this.find({ 
 
 		"next": {
-			"$lt": now
+			"$lte": new Date(now)
 		}
 
 	}, function(err, rules) {
