@@ -36,24 +36,24 @@
 				<table class="table no-more-tables">
 					<thead>
 						<tr>
-
-							<th width="6%">Status</th>
-
 							<th width="9%">Fonte</th>
 
 							<th width="22%">Parâmetros</th>
 
 							<th width="10%">Próx. Atualização</th>
+
+							<th width="6%"></th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr>
-							<td><span class="label label-important">ALERT!</span></td>
+						<tr ng-repeat="rule in rules">
 
-							<td valign="middle">Buscapé</td>
+							<td valign="middle">{{ rule.source.bundle }}</td>
 
-							<td valign="middle"><span class="muted">Palavra chave: "smartphone"</span></td>
+							<td valign="middle">
+								<span class="muted" ng-if="rule.source.q">Palavra chave: "{{ rule.source.q }}"</span>
+							</td>
 
 							<td valign="middle">
 								<div class="progress">
@@ -63,56 +63,14 @@
 									</div>
 								</div>
 							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="grid simple">
-			<div class="grid-title no-border">
-				<h4>Regras <span class="semi-bold">Inativas</span></h4>
-
-				<div class="tools">
-					<a class="reload" href="javascript:;"></a> 
-					<a class="config" data-toggle="modal" href="#grid-config"></a> 
-				</div>
-			</div>
-
-			<div class="grid-body no-border">
-				<table class="table no-more-tables">
-					<thead>
-						<tr>
-
-							<th width="6%">Status</th>
-
-							<th width="9%">Fonte</th>
-
-							<th width="22%">Parâmetros</th>
-
-							<th width="10%">Próx. Atualização</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr>
-							<td><span class="label label-important">ALERT!</span></td>
-
-							<td valign="middle">Buscapé</td>
-
-							<td valign="middle"><span class="muted">Palavra chave: "TV Led 3D"</span></td>
-
-							<td valign="middle">
-								<div class="progress">
-									<div class=
-									"progress-bar progress-bar-success animate-progress-bar"
-									data-percentage="79%" id="" style="width: 79%">
-									</div>
-								</div>
+							<td>
+								<a href="javascript:;">
+									<span class="label label-important">Relatórios</span>
+								</a>
+								<a href="javascript:;">
+									<span class="label label-important">Apagar</span>
+								</a>
 							</td>
 						</tr>
 					</tbody>

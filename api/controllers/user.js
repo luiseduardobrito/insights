@@ -1,5 +1,6 @@
 var mongoose = require("../services/mongoose");
 var User = mongoose.model("user");
+var Rules = mongoose.model("rule");
 
 module.exports = {
 	
@@ -95,5 +96,28 @@ module.exports = {
 			result: "success", 
 			message: "User logged out successfully!"
 		})
+	},
+
+	getRules: function(req, res) {
+
+		Rules
+			.find({	owner: req.cookies.user_id })
+			.exec(function(err, docs){
+
+				if(err) {
+
+					return res.json({
+						result: "error", 
+						message: "Could not find rules",
+						exception: err
+					})
+				}
+
+				return res.json({
+					result: "success", 
+					message: "Rules found successfully!",
+					rules: docs
+				})
+			})
 	}
 }

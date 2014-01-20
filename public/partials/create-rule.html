@@ -1,63 +1,94 @@
 <div class="content-create">
-    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-    <div class="content-create">
-      
-      <div class="page-title"> 
-        <h3>Nova <span class="semi-bold">Regra</span></h3>
-      </div>
+	<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+	<div class="content-create">
+		
+		<div class="page-title"> 
+			<h3>Nova <span class="semi-bold">Regra</span></h3>
+		</div>
 
-        <div class="row">
-            <div class="col-md-12">
-              <div class="grid simple">
-                <div class="grid-title no-border">
-                  <h4>Informações da <span class="semi-bold">Regra</span></h4>
-                  <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-                </div>
-                <div class="grid-body no-border"> <br>
-                  <div class="row">
-                    <div class="col-md-8 col-sm-8 col-xs-8">
-                      <div class="form-group">
-                        <label class="form-label">Bundle</label>
-                        <div class="controls">
-                          <select id="source" style="width:100%">
-                            <optgroup label="Lojas Online">
-                            <option value="BS">Buscape</option>
-                            <option value="SB">Submarino</option>
-                            <option value="KB">Kaboom</option>
-                            <option value="AM">Americanas</option>
-                            </optgroup>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label">Palavra-Chave</label>
-                        <span class="help">ex. "smartphone"</span>
-                        <div class="controls">
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label">Horário</label>
-                        <div class="controls">
-                          <div class="input-append bootstrap-timepicker-component">
-                            <input type="text" class="timepicker-default span12">
-                            <span class="add-on"><span class="arrow"></span><i class="icon-time"></i></span> 
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label">Passos</label>
-                        <span class="help">Insira um passo e pressione enter</span>
-                        <div class="controls">
-                          <input class="span12 tagsinput" type="text" ng-model="steps" data-role="tagsinput" itemvalue="value" itemtext="text" data-bootstrap-tagsinput/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      <!-- END PAGE -->
-    </div>
-  </div>
+			<div class="row">
+					<div class="col-md-12">
+						<div class="grid simple">
+							<div class="grid-title no-border">
+								<h4>Informações da <span class="semi-bold">Regra</span></h4>
+								<div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+							</div>
+							<div class="grid-body no-border"> <br>
+								<div class="row">
+									<div class="col-md-8 col-sm-8 col-xs-8">
+										<div class="form-group">
+											<label class="form-label">Fonte</label>
+											<div class="controls">
+												<select id="source" style="width:100%">
+													<optgroup label="E-Commerce">
+														<option value="buscape">Buscape</option>
+														<option value="submarino">Submarino</option>
+														<option value="mercadolivre">Mercado Livre</option>
+														<option value="americanas">Americanas</option>
+													</optgroup>
+													<optgroup label="Redes Socials">
+														<option value="facebook">Facebook</option>
+														<option value="twitter">Twitter</option>
+													</optgroup>
+													<optgroup label="Arquivos de Texto">
+														<option value="facebook">RSS</option>
+														<option value="twitter">XML</option>
+														<option value="twitter">JSON</option>
+														<option value="twitter">PDF</option>
+													</optgroup>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="form-label">Palavra-Chave</label>
+											<span class="help">Para e-commerce e redes sociais (ex: "smartphone")</span>
+											<div class="controls">
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="form-label">URL do Arquivo</label>
+											<span class="help">Para arquivos de texto (ex: "http://meusite.com/relatorios/vendas.xml")</span>
+											<div class="controls">
+												<input type="text" class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="form-label">Período</label>
+											<select class="form-control">
+												<option>Últimos 15 min (apenas contas premium)</option>
+												<option>Últimos 30 min (apenas contas premium)</option>
+												<option>Última hora</option>
+												<option>Últimas 3 horas</option>
+												<option>Últimas 24 horas</option>
+												<option>Últimos 3 dias</option>
+												<option>Últimos 7 dias</option>
+												<option>Últimos 15 dias</option>
+												<option>Últimos 30 dias</option>
+												<option>Últimos 60 dias</option>
+												<option>Últimos 90 dias</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label class="form-label">Tratamento de Dados</label>
+											<select class="form-control">
+												<option>Resumo estatístico (para dados numéricos)</option>
+												<option>Resumo de conteúdon (para conteúdo de texto)</option>
+												<option>Análise de Sentimento (BETA)</option>
+												<option>Gráficos de relevância (em breve)</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<a href="/rule/create">
+												<button type="button" class="btn btn-primary btn-cons" style="float:left;">Criar Regra</button>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		<!-- END PAGE -->
+	</div>
+</div>

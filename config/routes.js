@@ -24,6 +24,14 @@ module.exports = {
 			filters: ["authenticated"]
 		},
 
+		"/user/get_rules": {
+
+			controller: "user",
+			method: "getRules",
+
+			filters: ["authenticated"]
+		},
+
 		"/rule/span": {
 
 			controller: "rule",

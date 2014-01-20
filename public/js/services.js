@@ -179,6 +179,27 @@ insightsServices.factory('userService', ['$http',
 			});
 		}
 
+		_public.getRules = function(fn) {
+
+			$http({
+
+				url: "/api/user/get_rules",
+				method: "GET"
+			})
+
+			.success(function(data) {
+				if(data && data.user) {
+					_this.me = data.user;
+				}
+
+				fn(null, data.rules);
+			})
+
+			.error(function(err) {
+				fn(err, null);
+			});
+		}
+
 		return _this.init();
 	}
 ])
@@ -186,6 +207,61 @@ insightsServices.factory('userService', ['$http',
 insightsServices.factory('ruleService', ['$http',
 
 	function($http) {
-		//TO DO
+		
+		var _this = this;
+		var _public = {};
+
+		_this.init = function(){
+			return _public;
+		}
+
+		_public.create = function(data, fn) {
+
+			$http({
+
+				url: "/api/rule/create",
+				method: "GET",
+				params: data
+			})
+
+			.success(function(data) {
+				if(data && data.user) {
+					_this.me = data.user;
+				}
+
+				fn(null, _public.me());
+			})
+
+			.error(function(err) {
+				fn(err, null);
+			});
+		}
+
+		_public.span = function(rule, fn) {
+
+			$http({
+
+				url: "/api/rule/create",
+				method: "GET",
+
+				params: {
+					id: rule
+				}
+			})
+
+			.success(function(data) {
+				if(data && data.user) {
+					_this.me = data.user;
+				}
+
+				fn(null, _public.me());
+			})
+
+			.error(function(err) {
+				fn(err, null);
+			});	
+		}
+
+		return _this.init();
 	}
 ])
