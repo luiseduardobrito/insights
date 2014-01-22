@@ -1,27 +1,59 @@
 var insightsControllers = angular.module('insightsApp.controllers', []);
 
-insightsControllers.controller('DashboardCtrl', ['$scope', '$http', 'userService', 'alertService',
+insightsControllers.controller('LoggedInCtrl', ['$scope', '$http', 'userService', 'alertService',
 
 	function ($scope, $http, $user, $alert) {
 
-		// $alert.show("Testando", "Erro teste");
-		
+		$scope.postLogin = function(){
+			return $user.checkPostLogin()
+		}
+
+		$scope.$watch('postLogin()', function(status) {
+			if(status === false)
+				document.location.replace("/login.html");
+		})
 	}
 ]);
 
-// insightsControllers.controller('LoginCtrl', ['$scope', '$http', 'userService', 'alertService',
+insightsControllers.controller('LoginCtrl', ['$scope', '$http', 'userService', 'alertService',
 
-// 	function ($scope, $http, $User, $alert) {
+	function ($scope, $http, $user, $alert) {
+
+		$scope.me = $user.me;
+
+		$scope.$watch('me()', function(me){
+
+			if(me) {
+				$scope.user = me;
+				document.location.replace("/");
+			}
+		})
+
+		$scope.auth = function(){
+
+			$user.auth({
+			
+				email: $scope.email,
+				password: $scope.password
+
+			}, function(err, res) {
+
+				if(err) {
+
+					alert("Problema na autenticação");
+					console.error(err);
+				}
+			})
+		}
+	}
+]);
+
+insightsControllers.controller('SignupCtrl', ['$scope', '$http', 'userService', 'alertService',
+
+	function ($scope, $http, $User, $alert) {
 		
-// 	}
-// ]);
-
-// insightsControllers.controller('SignupCtrl', ['$scope', '$http', 'userService', 'alertService',
-
-// 	function ($scope, $http, $User, $alert) {
-		
-// 	}
-// ]);
+	}
+]);
 
 insightsControllers.controller('RulesCtrl', 
 

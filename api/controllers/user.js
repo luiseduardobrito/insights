@@ -98,6 +98,45 @@ module.exports = {
 		})
 	},
 
+	me: function(req, res) {
+
+		User.find({
+
+			_id: req.cookies.user_id
+
+		}, function(err, me) {
+
+			if(toString.call(me) === toString.call([])) {
+
+				// user not found
+				if(!me.length) {
+					me = null;
+				}
+
+				else {
+					me = me[0];
+				}
+			}
+
+			if(!me) {
+
+				// perform logout
+				res.cookie("user_id", "");
+				res.cookie("logged_in", "false");
+
+				// retry
+				res.redirect("/api/user/me");
+			}
+
+			return res.json({
+				result: "success", 
+				message: "User found successfully!",
+				user: me
+			})
+		})
+
+	},
+
 	getRules: function(req, res) {
 
 		Rules

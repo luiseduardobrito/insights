@@ -94,6 +94,7 @@ insightsServices.factory('userService', ['$http',
 		var _public = {};
 
 		_this.me = null;
+		_this.postLogin = true;
 
 		_this.init = function() {
 
@@ -104,11 +105,19 @@ insightsServices.factory('userService', ['$http',
 			})
 
 			.success(function(data) {
+
 				if(!data || data.result == "error") {
+
+					_this.postLogin = false;
 					return;
 				}
+
 				else
 					_this.me = data.user;
+			})
+
+			.error(function(err) {
+				_this.postLogin = false;
 			})
 
 			return _public;
@@ -116,6 +125,10 @@ insightsServices.factory('userService', ['$http',
 
 		_public.me = function() {
 			return _this.me;
+		}
+
+		_public.checkPostLogin = function(){
+			return _this.postLogin;
 		}
 
 		_public.create = function(user, fn) {
@@ -167,11 +180,17 @@ insightsServices.factory('userService', ['$http',
 			})
 
 			.success(function(data) {
+
 				if(data && data.user) {
 					_this.me = data.user;
+					fn(null, _public.me());
 				}
 
-				fn(null, _public.me());
+				else {
+
+					fn(data, null)
+				}
+
 			})
 
 			.error(function(err) {

@@ -24,6 +24,14 @@ module.exports = {
 			filters: ["authenticated"]
 		},
 
+		"/user/me": {
+
+			controller: "user",
+			method: "me",
+
+			filters: ["authenticated"]
+		},
+
 		"/user/get_rules": {
 
 			controller: "user",
