@@ -56,5 +56,24 @@ module.exports = {
 				resume: result
 			})
 		})
+	},
+
+	get: function(req, res) {
+
+		if(!req.param("id")) {
+			return res.json({
+				result: "error",
+				message: "missing query params"
+			})
+		}
+
+		Rule.findOne(req.param("id"), function(err, result) {
+
+			return res.json({
+				result: "success",
+				message: "rule resume found successfully",
+				rule: result
+			})
+		})
 	}
 }

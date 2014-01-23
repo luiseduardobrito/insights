@@ -260,7 +260,7 @@ insightsServices.factory('ruleService', ['$http',
 
 			$http({
 
-				url: "/api/rule/create",
+				url: "/api/rule/span",
 				method: "GET",
 
 				params: {
@@ -269,16 +269,49 @@ insightsServices.factory('ruleService', ['$http',
 			})
 
 			.success(function(data) {
-				if(data && data.user) {
-					_this.me = data.user;
+
+				if(!data || data.result == "error") {
+
+					fn(data, null)
+					return;
 				}
 
-				fn(null, _public.me());
+				else
+					fn(null, data)
 			})
 
 			.error(function(err) {
-				fn(err, null);
-			});	
+				_this.postLogin = false;
+			})
+		}
+
+		_public.get = function(rule, fn) {
+
+			$http({
+
+				url: "/api/rule/get",
+				method: "GET",
+
+				params: {
+					id: rule
+				}
+			})
+
+			.success(function(data) {
+
+				if(!data || data.result == "error") {
+
+					fn(data, null)
+					return;
+				}
+
+				else
+					fn(null, data.rule)
+			})
+
+			.error(function(err) {
+				_this.postLogin = false;
+			})
 		}
 
 		return _this.init();

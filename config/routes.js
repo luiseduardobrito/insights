@@ -47,6 +47,14 @@ module.exports = {
 
 			filters: ["authenticated"]
 		},
+
+		"/rule/get": {
+
+			controller: "rule",
+			method: "get",
+
+			filters: ["authenticated"]
+		},
 	},
 
 	"post": {
