@@ -29,15 +29,16 @@ phonecatApp.config(['$routeProvider', '$locationProvider',
 				controller: 'RulesCtrl'
 			})
 
+			.when('/rule/create', {
+				templateUrl: 'partials/create-rule.html',
+				controller: 'CreateRuleCtrl'
+			})
+
 			.when('/rule/:id', {
 				templateUrl: 'partials/dashboard.html',
 				controller: 'RuleDetailsCtrl'
 			})
 
-			.when('/rule/create', {
-				templateUrl: 'partials/create-rule.html',
-				controller: 'CreateRuleCtrl'
-			})
 
 			.otherwise({
 				redirectTo: '/'

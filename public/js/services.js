@@ -239,16 +239,19 @@ insightsServices.factory('ruleService', ['$http',
 			$http({
 
 				url: "/api/rule/create",
-				method: "GET",
-				params: data
+				method: "POST",
+				data: JSON.stringify(data),
+				headers: {'Content-Type': 'application/json'}
 			})
 
 			.success(function(data) {
-				if(data && data.user) {
-					_this.me = data.user;
+
+				if(data && data.result == "success") {
+					fn(null, data);
 				}
 
-				fn(null, _public.me());
+				else
+					fn(data, null);
 			})
 
 			.error(function(err) {

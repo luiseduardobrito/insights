@@ -31,8 +31,8 @@ var Buscape = function(){
 		request(util.format(api_url, task.q), function (error, response, body) {
 			
 			if(error)
-				throw new Error(util.format(err.toString()) || 
-							"Problem scrapping webpage: " + err.message.toString());
+				throw new Error(util.format(error.toString()) || 
+							"Problem scrapping webpage: " + error.message.toString());
 			
 			else if (response.statusCode == 200) {
 				

@@ -19,7 +19,7 @@
 										<div class="form-group">
 											<label class="form-label">Fonte</label>
 											<div class="controls">
-												<select id="source" style="width:100%">
+												<select id="source" style="width:100%" ng-model="bundle">
 													<optgroup label="E-Commerce">
 														<option value="buscape">Buscape</option>
 														<option value="submarino">Submarino</option>
@@ -43,43 +43,43 @@
 											<label class="form-label">Palavra-Chave</label>
 											<span class="help">Para e-commerce e redes sociais (ex: "smartphone")</span>
 											<div class="controls">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" ng-model="query">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="form-label">URL do Arquivo</label>
 											<span class="help">Para arquivos de texto (ex: "http://meusite.com/relatorios/vendas.xml")</span>
 											<div class="controls">
-												<input type="text" class="form-control">
+												<input type="text" class="form-control" ng-model="url">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="form-label">Período</label>
-											<select class="form-control">
-												<option>Últimos 30 min (apenas contas premium)</option>
-												<option>Última hora (apenas contas premium)</option>
-												<option>Últimas 3 horas (apenas contas premium)</option>
-												<option>Últimas 24 horas</option>
-												<option>Últimos 3 dias</option>
-												<option>Últimos 7 dias</option>
-												<option>Últimos 15 dias</option>
-												<option>Últimos 30 dias</option>
-												<option>Últimos 60 dias</option>
-												<option>Últimos 90 dias</option>
+											<select class="form-control" ng-model="time">
+												<option value="after 30 minutes ago">Últimos 30 min (apenas contas premium)</option>
+												<option value="after 60 minutes ago">Última hora (apenas contas premium)</option>
+												<option value="after 3 hours ago">Últimas 3 horas (apenas contas premium)</option>
+												<option value="after 24 hours ago">Últimas 24 horas</option>
+												<option value="after 3 days ago">Últimos 3 dias</option>
+												<option value="after 7 days ago">Últimos 7 dias</option>
+												<option value="after 15 days ago">Últimos 15 dias</option>
+												<option value="after 30 days ago">Últimos 30 dias</option>
+												<option value="after 60 days ago">Últimos 60 dias</option>
+												<option value="after 90 days ago">Últimos 90 dias</option>
 											</select>
 										</div>
 										<div class="form-group">
 											<label class="form-label">Tratamento de Dados</label>
-											<select class="form-control">
-												<option>Resumo estatístico (para dados numéricos)</option>
-												<option>Resumo de conteúdo (para texto)</option>
-												<option>Análise de Sentimento (BETA)</option>
+											<select class="form-control" ng-model="analysis">
+												<option value="statistic">Resumo estatístico (para dados numéricos)</option>
+												<option value="content">Resumo de conteúdo (para texto)</option>
+												<option value="sentiment">Análise de Sentimento (BETA)</option>
 												<option>Gráficos de relevância (em breve)</option>
 											</select>
 										</div>
 										<div class="form-group">
-											<a href="/rule/create">
-												<button type="button" class="btn btn-primary btn-cons" style="float:left;">Criar Regra</button>
+											<a href="javascript:;">
+												<button type="button" class="btn btn-primary btn-cons" style="float:left;" ng-click="create()">Criar Regra</button>
 											</a>
 										</div>
 									</div>

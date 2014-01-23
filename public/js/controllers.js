@@ -62,6 +62,10 @@ insightsControllers.controller('RulesCtrl',
 	function ($scope, $http, $user, $alert, $location) {
 
 		$scope.rules = [];
+
+		$scope.goto = function(p) {
+			$location.path(p)
+		}
 		
 		$user.getRules(function(err, rules) {
 
@@ -155,11 +159,59 @@ insightsControllers.controller('RuleDetailsCtrl',
 	}
 ]);
 
-insightsControllers.controller('CreateRuleCtrl', ['$scope', '$http', 'userService', 'alertService',
+insightsControllers.controller('CreateRuleCtrl', ['$scope', '$http', 'userService', 'ruleService', '$location',
 
-	function ($scope, $http, $user, $alert) {
+	function ($scope, $http, $user, $rule, $location) {
 
 		$scope.steps = ["Resumo Estatístico"];
 		jQuery(".tagsinput").tagsinput()
+
+		$scope.pipelines = {
+
+			statistic: {
+				pipeline: "statistic",
+				method: "resume"
+			},
+
+			content: {
+				pipeline: "content",
+				method: "tags"
+			},
+
+			sentiment: {
+				pipeline: "content",
+				method: "sentiment"
+			}
+		}
+
+		$scope.create = function() {
+
+			$rule.create({
+
+				source: {
+					bundle: $scope.bundle,
+					q: $scope.query
+				},
+
+				tunnel: {
+					time: $scope.time,
+					steps: [{
+						pipeline: $scope.pipelines[$scope.analysis].pipeline,
+						method: $scope.pipelines[$scope.analysis].method
+					}]
+				}
+
+			}, function(err, result) {
+
+				if(err) {
+					alert("Não foi possível criar a regra");
+					return;
+				}
+
+				else {
+					$location.path("rules");
+				}
+			})
+		}
 	}
 ]);
