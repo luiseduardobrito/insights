@@ -100,7 +100,7 @@
 		<!-- BEGIN CONTAINER -->
 		<div class="page-container row">
 		<!-- BEGIN SIDEBAR -->
-		<div class="page-sidebar" id="main-menu">
+		<div class="page-sidebar" id="main-menu" ng-controller="SidebarCtrl">
 			<!-- BEGIN MINI-PROFILE -->
 			<div class="user-info-wrapper">
 				<div class="profile-wrapper">
@@ -108,7 +108,7 @@
 				</div>
 				<div class="user-info">
 					<div class="greeting">Bem vindo</div>
-					<div class="username">Administrador <span class="semi-bold"></span></div>
+					<div class="username">{{ user.name }}<span class="semi-bold"></span></div>
 				</div>
 			</div>
 			<!-- END MINI-PROFILE -->

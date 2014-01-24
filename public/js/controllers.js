@@ -15,6 +15,21 @@ insightsControllers.controller('LoggedInCtrl', ['$scope', '$http', 'userService'
 	}
 ]);
 
+insightsControllers.controller('SidebarCtrl', ['$scope', '$http', 'userService', 'alertService',
+
+	function ($scope, $http, $user, $alert) {
+
+		$scope.me = function() {
+			return $user.me();
+		}
+
+		$scope.$watch('me()', function(user) {
+			if(user)
+				$scope.user = user;
+		})
+	}
+]);
+
 insightsControllers.controller('LoginCtrl', ['$scope', '$http', 'userService', 'alertService',
 
 	function ($scope, $http, $user, $alert) {
