@@ -1,6 +1,6 @@
 module.exports = {
 
-	state: "development",
+	state: "production",
 	lang: "en-US",
 
 	development: {
@@ -49,15 +49,21 @@ module.exports = {
 
 		port: 3000,
 
+		cluster: {
+		
+			max: 3
+		},
+
 		db: {
 		
 			protocol: "mongodb://",
+			port: 10008,
 
-			user: "root",
-			password: "",
+			user: "heroku",
+			password: "heroku",
 
-			db: "main",
-			host: "localhost"
+			db: "app21538937",
+			host: "troup.mongohq.com"
 		}
 	}
 }
